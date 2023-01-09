@@ -41,6 +41,14 @@ function prayerTime(country, city){
         `
         console.log(response.data.data[0].timings)
     })
+    .catch((error) => {
+        document.getElementById("times").innerHTML += `
+        <div class="post">
+        <h2>opps</h2>
+        <p>${error.response.status}</p>
+        </div>
+        `
+    })
 }
 
 prayerTime(`UK`, `London`)
