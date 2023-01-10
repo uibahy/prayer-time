@@ -28,7 +28,7 @@ for (ccLocation of ccLocations){
 }
 
 function prayerTime(country, city){
-    axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?country=${country}&city=${city}`)
+    axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?country=$3424`)
     .then((response) => {
         document.getElementById("times").innerHTML = ``
         document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3">${response.data.data.date.readable}</span></h2>`
@@ -64,14 +64,15 @@ function prayerTime(country, city){
         </div>
         `
     })
-    // .catch((error) => {
-    //     document.getElementById("times").innerHTML += `
-    //     <div class="post">
-    //     <h2>opps</h2>
-    //     <p>${response.status}</p>
-    //     </div>
-    //     `
-    // })
+    .catch((error) => {
+        document.getElementById("times").innerHTML += `
+        <div class="post">
+        <h2>opps</h2>
+        <p>${error.response.data.code}</p>
+        </div>
+        `
+        // console.log(error.response.data.code)
+    })
 }
 
 prayerTime(`UK`, `London`)
