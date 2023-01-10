@@ -1,54 +1,54 @@
 function prayerTime(country, city){
-    axios.get(`https://api.aladhan.com/v1/calendarByCity?country=${country}&city=${city}`)
+    axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?country=${country}&city=${city}`)
     .then((response) => {
+
+        
+        var dateFormat = new Date(Number(response.data.data.date.timestamp));
+        console.log(dateFormat.toLocaleTimeString());
+
+
         document.getElementById("times").innerHTML = ``
-        document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3"> ${response.data.data[0].date.readable}</span></h2>`
+        document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3">${response.data.data.date.readable}</span></h2>`
+        console.log(response.data.data.date.timestamp)
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Fajr</h2>
-        <p>${response.data.data[0].timings.Fajr}</p>
-        </div>
-        `
-        document.getElementById("times").innerHTML += `
-        <div class="post">
-        <h2>Sunrise</h2>
-        <p>${response.data.data[0].timings.Sunrise}</p>
+        <p>${response.data.data.timings.Fajr}</p>
         </div>
         `
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Dhuhr</h2>
-        <p>${response.data.data[0].timings.Dhuhr}</p>
+        <p>${response.data.data.timings.Dhuhr}</p>
         </div>
         `
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Asr</h2>
-        <p>${response.data.data[0].timings.Asr}</p>
+        <p>${response.data.data.timings.Asr}</p>
         </div>
         `
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Maghrib</h2>
-        <p>${response.data.data[0].timings.Maghrib}</p>
+        <p>${response.data.data.timings.Maghrib}</p>
         </div>
         `
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Isha</h2>
-        <p>${response.data.data[0].timings.Isha}</p>
-        </div>
-        `
-        console.log(response.data.data[0].timings)
-    })
-    .catch((error) => {
-        document.getElementById("times").innerHTML += `
-        <div class="post">
-        <h2>opps</h2>
-        <p>${error.response.status}</p>
+        <p>${response.data.data.timings.Isha}</p>
         </div>
         `
     })
+    // .catch((error) => {
+    //     document.getElementById("times").innerHTML += `
+    //     <div class="post">
+    //     <h2>opps</h2>
+    //     <p>${response.status}</p>
+    //     </div>
+    //     `
+    // })
 }
 
 prayerTime(`UK`, `London`)
