@@ -1,15 +1,9 @@
 function prayerTime(country, city){
     axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?country=${country}&city=${city}`)
     .then((response) => {
-
-        
-        var dateFormat = new Date(Number(response.data.data.date.timestamp));
-        console.log(dateFormat.toLocaleTimeString());
-
-
         document.getElementById("times").innerHTML = ``
         document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3">${response.data.data.date.readable}</span></h2>`
-        console.log(response.data.data.date.timestamp)
+        // console.log(response.data.data.date.timestamp)
         document.getElementById("times").innerHTML += `
         <div class="post">
         <h2>Fajr</h2>
