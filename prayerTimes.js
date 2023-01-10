@@ -28,7 +28,7 @@ for (ccLocation of ccLocations){
 }
 
 function prayerTime(country, city){
-    axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?city=Msila&country=Algeria`)
+    axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?city=${city}&country=${country}`)
     .then((response) => {
         document.getElementById("times").innerHTML = ``
         document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3">${response.data.data.date.readable}</span></h2>`
