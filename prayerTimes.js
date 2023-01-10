@@ -1,3 +1,31 @@
+let ccLocations = [
+    {
+        country: "Algeria",
+        city:"Msila"
+    },
+    {
+        country: "UK",
+        city:"London"
+    },
+    {
+        country: "USA",
+        city:"Dinver"
+    },
+    {
+        country: "Morocco",
+        city:"Rabat"
+    }
+]
+
+for (ccLocation of ccLocations){
+    document.getElementById("locations").innerHTML += `
+    <div id="users" onclick="prayerTime(${ccLocation.country}, ${ccLocation.city})" class="user">
+        <h2>${ccLocation.country}</h2>
+        <p>${ccLocation.city}</p>
+    </div>
+    `
+}
+
 function prayerTime(country, city){
     axios.get(`https://api.aladhan.com/v1/timingsByCity/:date_or_timestamp?country=${country}&city=${city}`)
     .then((response) => {
