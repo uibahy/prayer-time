@@ -1,5 +1,5 @@
 function prayerTime(country, city){
-    axios.get(`http://api.aladhan.com/v1/calendarByCity?country=${country}&city=${city}`)
+    axios.get(`https://api.aladhan.com/v1/calendarByCity?country=${country}&city=${city}`)
     .then((response) => {
         document.getElementById("times").innerHTML = ``
         document.getElementById("times").innerHTML = `<h2 style="color: white"> ${country}, ${city}, <span style="color: #9a9eb3"> ${response.data.data[0].date.readable}</span></h2>`
