@@ -71,7 +71,6 @@ function prayerTime(country, city){
         <p>${error.response.data.code}</p>
         </div>
         `
-        // console.log(error.response.data.code)
     })
 }
 
