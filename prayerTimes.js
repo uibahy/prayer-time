@@ -1,25 +1,26 @@
 let ccLocations = [
     {
-        country: "Algeria",
-        city:"Msila"
+        country: `Algeria`,
+        city:`Msila`
     },
     {
-        country: "UK",
-        city:"London"
+        country: `UK`,
+        city:`London`
     },
     {
-        country: "USA",
-        city:"Dinver"
+        country: `USA`,
+        city:`Dinver`
     },
     {
-        country: "Morocco",
-        city:"Rabat"
+        country: `Morocco`,
+        city:`Rabat`
     }
 ]
 
 for (ccLocation of ccLocations){
+    let contryCity = "`"+ccLocation.country+"`"+", "+"`"+ccLocation.city+"`"
     document.getElementById("locations").innerHTML += `
-    <div id="users" onclick="prayerTime(${ccLocation.country}, ${ccLocation.city})" class="user">
+    <div id="users" onclick="prayerTime(${contryCity})" class="user">
         <h2>${ccLocation.country}</h2>
         <p>${ccLocation.city}</p>
     </div>
